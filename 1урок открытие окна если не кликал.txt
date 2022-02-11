@@ -1,0 +1,20 @@
+								если не вызывалось окно помощи то через time вызовется  
+function showModalByTime (selector, time){
+        setTimeout(()=>{
+
+            let display;							создали переменную
+
+            document.querySelectorAll('[data-modal]').forEach(item=>{		выбрали все '[data-modal]' потому, что нет доступа к старому  
+                if(getComputedStyle(item).display !=='none'){			если хоть одна показывается, есть getComputedStyle 
+                    display = 'block';						переменной display установим значение
+                }})            
+
+            if(!display){							если у переменной display нет значения, то выполнится открытие функции
+                document.querySelector(selector).style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                let scroll = calcScroll();					здесь добавили вызов функции т.к. в setTimeout не существует  scroll 
+                document.body.style.marginRight = `${scroll}px`;		
+            }
+        }, time)
+   }
+								

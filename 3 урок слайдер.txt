@@ -1,0 +1,45 @@
+const sliders = (slider, dir, prev, next) =>{
+
+    try{								try catch если не все вызовы будут заполнены, не выдаст ошибку							
+        const  prevBtn = document.querySelector(prev),			try...catch пытается выполнить инструкции в блоке try, в случае ошибки, выполняет catch
+               nextBtn = document.querySelector(next);       		во втором случае не заполнены поля prev, next, но ошибки не будет
+
+        prevBtn.addEventListener('click', ()=>{
+            plusSlide(-1);
+            items[slideIndex - 1].classList.remove('slideInLeft');
+            items[slideIndex - 1].classList.add('slideInRight');
+        });
+
+        nextBtn.addEventListener('click', ()=>{
+            plusSlide(1);
+            items[slideIndex - 1].classList.remove('slideInRight');
+            items[slideIndex - 1].classList.add('slideInLeft');
+        })
+    }catch(e){}
+
+    function activateSlides(){
+        if(dir === 'vertical'){
+            paused = setInterval(function(){
+                plusSlide(1);
+                items[slideIndex-1].classList.add('slideInDown');		переход сверху вниз
+            },3000);
+        }else{
+            paused = setInterval(function(){			
+                plusSlide(1);
+                items[slideIndex - 1].classList.remove('slideInRight');		переход слева на право
+                items[slideIndex - 1].classList.add('slideInLeft');
+            },3000);
+        }
+    }
+    activateSlides();
+    
+    items[0].parentNode.addEventListener('mouseenter', ()=>{			при наведении мышки остановить выполнения перехода картинки
+        clearInterval(paused);
+    })
+
+    items[0].parentNode.addEventListener('mouseleave', ()=>{
+        activateSlides();
+    })    
+}
+
+export default sliders;

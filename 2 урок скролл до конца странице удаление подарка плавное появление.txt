@@ -1,0 +1,30 @@
+								удаление подарка со странице
+const bindModal = (triggerSelector, contentSelector, closeSelector, destroy = false)=>{		ставим destroy в позицию false
+	trigger.forEach(item=>{
+            item.addEventListener('click', (e)=>{
+                if(e.target){
+                    e.preventDefault();}
+
+                if(destroy){
+                    item.remove();}							если destroy = true, то удаляется подарок со странице
+
+bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close',  true );		у подарка destroy = true 
+
+							при прокрутке вниз, вручную вызываем (selector).click()
+function openByScroll(selector){
+        window.addEventListener('scroll', ()=>{
+	    let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - что больше для поодержки старых браузеров 
+
+            if(!btnPress && (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)){
+                document.querySelector(selector).click();			в ручную вызываем клик
+            } })}
+
+window.pageYOffset -					сколько пользователь отлистал вниз
+document.documentElement.clientHeight - 		контент что виден пользователю, без margin
+document.documentElement.scrollHeight - 		полная высота страницы, без margin
+
+							плавное появление анимации в html подключена библиотека <link rel="stylesheet" href="assets/css/animate.css">
+ window.forEach(item=>{
+       item.style.display ='none';
+       item.classList.add('animated', 'fadeIn'); }) 	 	плавное пояление и удаление элементов
+               

@@ -1,0 +1,11 @@
+								удаление подарка со странице
+const bindModal = (triggerSelector, contentSelector, closeSelector, destroy = false)=>{		ставим destroy в позицию false
+	trigger.forEach(item=>{
+            item.addEventListener('click', (e)=>{
+                if(e.target){
+                    e.preventDefault();}
+
+                if(destroy){
+                    item.remove();}							если destroy = true, то удаляется подарок со странице
+
+bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close',  true );		у подарка destroy = true 

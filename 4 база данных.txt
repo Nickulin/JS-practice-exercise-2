@@ -1,0 +1,2 @@
+// const dist = "./dist/";						закоментируем gulpfile.js
+const dist = "D:/OpenServer/domains/exercise";				для работы с openServer

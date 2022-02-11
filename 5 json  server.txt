@@ -1,0 +1,2 @@
+npm install -g json-server установка глобально, но он уже установлен
+в новом окне json-server  src/assets/db.json запускаем сервер
